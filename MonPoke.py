@@ -1,4 +1,5 @@
 import random
+from Moves import Moves
 
 class MonPoke:
     def __init__(self, Name, HP, Type, Speed, Attack, Defense, SpAtk, SpDef):
@@ -14,9 +15,9 @@ class MonPoke:
 
 
 
-def HP(H, L, EV, IV):
-    finalHP= ((((2 * H + IV + (EV/4))*L)/100)+10+L)
-    print(finalHP)
+    def Healt(self, EV):
+        finalHP= ((((2 * self.HP + random.randint(1,31) + (EV/4))*50)/100)+10+50)
+        print(finalHP)
 
 def Otherstat(B, IV, EV, L):
     finalstat = (((((2*B) + IV +(EV/4))*L)/100)+5)
