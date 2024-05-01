@@ -45,7 +45,7 @@ async def matchmake(interaction: discord.interactions):
                 await interaction.response.send_message(f"{user} has startes match in {channel.name} use /matchmake to join the match!")
                 print("lidjf")
     else:
-       await interaction.response.send_message("Cant use this command in non-MonPoke Stadiem channels")
+       await interaction.response.send_message("Cant use this command in non-MonPoke Stadium channels")
 
 @bot.tree.command(name = "quit")
 async def quit(interaction: discord.integrations):
