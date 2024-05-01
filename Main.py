@@ -3,6 +3,7 @@ import random
 import asyncio
 import uuid
 from Match import match
+from Match import Player
 from discord import app_commands
 from discord.ext import commands
 import Teams
@@ -66,6 +67,17 @@ async def chooseteam(interaction: discord.Interaction, team: Teams.Team):
 @bot.tree.command(name = "chooseattack")
 async def chooseattack(interaction: discord.interactions, atk1: str, atk2: str, atk3: str, atk4: str):
     None
+
+@bot.tree.command(name = "startgame")
+async def startgame(interaction: discord.interactions):
+    channel = interaction.channel
+    user = interaction.user
+    if len(matches[channel].players) == 2:
+        for player in matches[channel].players:
+            Player(player)
+    else:
+        await interaction.response.send_message("not enough players to start match")
+
 
 token = get_token()
 bot.run(token)
