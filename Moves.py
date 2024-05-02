@@ -21,12 +21,14 @@ typematchups = {
     }
 
 class Moves():
-    def __init__(self, Name,Type, Sort, Power, Accuracy):
+    def __init__(self, Name,Type, Sort, Power, Accuracy, target, user):
         self.Name = Name
         self.Type = Type
         self.Sort = Sort
         self.Power = Power
         self.Accuracy = Accuracy
+        self.target = target
+        self.user = user
 
     def damage(self, user, target):
         if self.Sort == "Physical":
