@@ -1,7 +1,40 @@
+import random
+typematchups = {
+    "Fire": {"Weaknesses": ["Rock", "Ground", "Water"], "Resistances": ["Bug", "Steel", "Fire", "Grass", "Ice", "Fairy"], "Immunities": []},
+    "Water": {"Weaknesses": ["Grass", "Electric"], "Resistances": ["Water", "Fire", "Ice", "Steel"], "Immunities": []},
+    "Grass": {"Weaknesses": ["Fire", "Bug", "Ice", "Poison", "Flying"], "Resistances": ["Water", "Grass", "Ground", "Electric"], "Immunities": []},
+    "Electric": {"Weaknesses": ["Ground"], "Resistances": ["Electric", "Flying", "Steel"], "Immunities": []},
+    "Bug": {"Weaknesses": ["Rock", "Flying", "Fire"], "Resistances": ["Fighting", "Ground", "Grass"], "Immunities": []},
+    "Ground": {"Weaknesses": ["Grass", "Water", "Ice"], "Resistances": ["Poison", "Rock"], "Immunities": ["Electric"]},
+    "Rock": {"Weaknesses": ["Fighting", "Ground", "Grass", "Water", "Steel"], "Resistances": ["Ice", "Flying", "Fire", "Poison"], "Immunities": []},
+    "Steel": {"Weaknesses": ["Ground", "Fire", "Fighting"], "Resistances": ["Normal", "Flying", "Bug", "Rock", "Steel", "Grass", "Psychic", "Ice", "Dragon", "Fairy"], "Immunities": ["Poison"]},
+    "Ice": {"Weaknesses": ["Fire", "Steel", "Fighting", "Rock"], "Resistances": ["Ice"], "Immunities": []},
+    "Dragon": {"Weaknesses": ["Dragon", "Fairy", "Ice"], "Resistances": ["Fire", "Water", "Grass", "Electric"], "Immunities": []},
+    "Fairy": {"Weaknesses": ["Poison", "Steel"], "Resistances": ["Fighting", "Bug", "Dark"], "Immunities": ["Dragon"]},
+    "Fighting": {"Weaknesses": ["Flying", "Psychic", "Fairy"], "Resistances": ["Rock", "Bug", "Dark"], "Immunities": []},
+    "Normal": {"Weaknesses": ["Fighting"], "Resistances": [], "Immunities": ["Ghost"]},
+    "Psychic": {"Weaknesses": ["Bug", "Dark", "Ghost"], "Resistances": ["Fighting", "Psychic"], "Immunities": []},
+    "Poison": {"Weaknesses": ["Gound", "Psychic"], "Resistances": ["Fighting", "Poison", "Bug", "Grass", "Fairy"], "Immunities": []},
+    "Dark": {"Weaknesses": ["Fighting", "Bug", "Fairy", ], "Resistances": ["Ghost", "Dark"], "Immunities": ["Psychic"]},
+    "Ghost": {"Weaknesses": ["Ghost", "Dark"], "Resistances": ["Bug", "Poison", ], "Immunities": ["Normal", "Fighting"]},
+    "Flying": {"Weaknesses": ["Rock", "Electric", "Ice"], "Resistances": ["Fighting", "Bug", "Grass"], "Immunities": ["Ground"]}
+    }
+
 class Moves():
     def __init__(self, Name,Type, Power, Accuracy):
         self.Name = Name
         self.Type = Type
         self.Power = Power
         self.Accuracy = Accuracy
+
+    def damage(self, user, target):
+        if random.randint(1, 16) == 16:
+            Crit = 1.5
+        else:
+            Crit = 1
+        if self.Type == user.Type:
+            Stab = 1.5
+        else:
+            Stab = 1
+        damage = ((((2 * L) / 5 + 2) * self.Power * (user.Attack / target.Defense)) / 50 + 2) * Crit * (random.randint(85, 100) / 100) * Stab * Type
     
