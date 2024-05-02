@@ -2,16 +2,17 @@ import random
 from Moves import Moves
 
 class MonPoke:
-    def __init__(self, Name, HP, Type, Speed, Attack, Defense, SpAtk, SpDef):
-        self.Name = Name
-        self.HP = HP
-        self.Type = Type
-        self.Speed = Speed
-        self.Attack = Attack
-        self.Defense = Defense
-        self.SpAtk = SpAtk
-        self.SpDef = SpDef
-        self.moves = []
+    def __init__(self, Name, HP, Type, Speed, Attack, Defense, SpAtk, SpDef, level=50):
+        self.Name = Name #str
+        self.HP = HP #int
+        self.Type = Type #tuple
+        self.Speed = Speed #int
+        self.Attack = Attack #int
+        self.Defense = Defense #int
+        self.SpAtk = SpAtk #int
+        self.SpDef = SpDef #int
+        self.moves = [] #list
+        self.level = level #int
 
 
 

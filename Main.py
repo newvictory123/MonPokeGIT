@@ -40,7 +40,7 @@ async def matchmake(interaction: discord.interactions):
                 await interaction.response.send_message(f"{user} has joined {channel.name}!")
                 print ("lijk")
             else:
-                newmatch = match( channel, [], 0)
+                newmatch = match( channel, [], 0, [])
                 newmatch.players.append(user)
                 matches[newmatch.channel] = newmatch
                 await interaction.response.send_message(f"{user} has startes match in {channel.name} use /matchmake to join the match!")
@@ -74,7 +74,9 @@ async def startgame(interaction: discord.interactions):
     user = interaction.user
     if len(matches[channel].players) == 2:
         for player in matches[channel].players:
-            Player(player)
+            Playerobject = Player(player)
+        await interaction.response.send_message(f"players: {matches[channel].players[1].playername + matches[channel].players[2].playername} started a match in {channel.name}")
+        matches[channel].gameloop()
     else:
         await interaction.response.send_message("not enough players to start match")
 
