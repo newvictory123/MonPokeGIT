@@ -21,16 +21,16 @@ typematchups = {
     }
 
 class Moves():
-    def __init__(self, Name,Type, Sort, Power, Accuracy, target, user):
+    def __init__(self, Name, Type, Sort, Power, Accuracy):
         self.Name = Name
         self.Type = Type
         self.Sort = Sort
         self.Power = Power
         self.Accuracy = Accuracy
-        self.target = target
-        self.user = user
 
     def damage(self, user, target):
+        if random.randint > self.Accuracy:
+            return 0
         if self.Sort == "Physical":
             Attack = user.Attack
             Defense = target.Defense
@@ -54,4 +54,4 @@ class Moves():
         else:
             Effectiveness = 1
         damage = ((((2 * user.Level) / 5 + 2) * self.Power * (Attack / Defense)) / 50 + 2) * Crit * (random.randint(85, 100) / 100) * Stab * Effectiveness
-        target.Health -= damage
+        return damage
