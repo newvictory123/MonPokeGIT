@@ -35,13 +35,14 @@ async def matchmake(interaction: discord.interactions):
     user = interaction.user
     print(matches.keys())
     if channel.name[:15] == "monpoke-stadium":
-            if channel in matches.keys() and matches[channel].IsJoinable(user, matches):
-                matches[channel].players.append(user)
+            player = Player(user.name)
+            if channel in matches.keys() and matches[channel].IsJoinable(player, matches):
+                matches[channel].players.append(player)
                 await interaction.response.send_message(f"{user} has joined {channel.name}!")
                 print ("lijk")
             else:
-                newmatch = match( channel, [], 0, [])
-                newmatch.players.append(user)
+                newmatch = match(channel)
+                newmatch.players.append(player)
                 matches[newmatch.channel] = newmatch
                 await interaction.response.send_message(f"{user} has startes match in {channel.name} use /matchmake to join the match!")
                 print("lidjf")
@@ -52,8 +53,11 @@ async def matchmake(interaction: discord.interactions):
 async def quit(interaction: discord.integrations):
     channel = interaction.channel
     user = interaction.user
+    for player in matches[channel].players:
+        if player.playername == user.name:
+            playerquit = player
     if channel in matches.keys() and matches[channel].IsQuitable(user):
-        matches[channel].players.remove(user)
+        matches[channel].players.remove(playerquit)
         await interaction.response.send_message(f"{user} left {channel}")
     else:
         await interaction.response.send_message("Error")
@@ -62,21 +66,34 @@ async def quit(interaction: discord.integrations):
 @bot.tree.command(name = "chooseteam", description="team selected")
 @app_commands.describe(team = "teams")
 async def chooseteam(interaction: discord.Interaction, team: Teams.Team):
+    user = interaction.user
+    channel=interaction.channel
+    for player in matches[channel].players:
+        if player.playername == user.name:
+            userchoosing = player
+    playerchoosing = matches[channel].players[userchoosing]
+    playerchoosing.MonPokes = team
+    playerchoosing.HasAnswered = True
+
     await interaction.response.send_message(f'Your favourite team is {team.name}.')
 
 @bot.tree.command(name = "chooseattack")
 async def chooseattack(interaction: discord.interactions, atk1: str, atk2: str, atk3: str, atk4: str):
     None
 
+@bot.tree.command(name = "switch")
+async def chooseattack(interaction: discord.interactions):
+    None
+
+
 @bot.tree.command(name = "startgame")
 async def startgame(interaction: discord.interactions):
     channel = interaction.channel
     user = interaction.user
     if len(matches[channel].players) == 2:
-        for player in matches[channel].players:
-            Playerobject = Player(player)
-        await interaction.response.send_message(f"players: {matches[channel].players[1].playername + matches[channel].players[2].playername} started a match in {channel.name}")
-        matches[channel].gameloop()
+        matches[channel].state = 1
+        await interaction.response.send_message(f"players: {matches[channel].players[0].playername + matches[channel].players[1].playername} started a match in {channel.name}")
+        await matches[channel].GameLoop()
     else:
         await interaction.response.send_message("not enough players to start match")
 
