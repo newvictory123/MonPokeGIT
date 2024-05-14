@@ -4,6 +4,24 @@ from MonPoke import MonPoke
 
 Tackle = Moves("Tackle", "Normal", "Physical", 40, 100)
 
+ThrowerFlame = Moves("ThrowerFlame", "Fire", "Special", 90, 100)
+
+BoltThunder = Moves("BoltThunder", "Electric", "Special", 90, 100)
+
+QuakeEarth = Moves("QuakeEarth", "Ground", "Physical", 100, 100)
+
+BallEnergy = Moves("BallEnergy", "Grass", "Special", 90, 100)
+
+TacklePLUS = Moves("TacklePLUS", "Normal", "Physical", 90, 100)
+
+BallGyro = Moves("BallGyro", "Steel", "Special", 80, 100)
+
+BlastMoon = Moves("BlastMoon", "Fairy", "Special", 95, 100)
+
+ClawDragon = Moves("ClawDragon", "Dragon", "Physical", 80, 100)
+
+Frus = Moves("Frus", "Water", "Special", 90, 100) 
+
 ###singular MonPokes
 Zardichar = MonPoke("Zardichar", 108, "grass", 30, 78, 100, 100, 100,{"Tackle":Tackle})
 
@@ -19,14 +37,14 @@ ZoneMagne = MonPoke("Zonemagne", 108, "Steel", 30, 78, 100, 100, 100, [Tackle])
 
 Ableclef = MonPoke("Ableclef", 108, "Fairy", 30, 78, 100, 100, 100, [Tackle])
 
-RiaAlta = MonPoke("Rialta", 108, "Dragon", 30, 78, 100, 100, 100, [Tackle])
+OrusHax = MonPoke("OrusHax", 108, "Dragon", 30, 78, 100, 100, 100, [Tackle])
 
-LixTeel = MonPoke("Lixteel", 108, "Steel", 30, 78, 100, 100, 100, [Tackle])
+ToiseBlas = MonPoke("ToiseBlas", 108, "Water", 30, 78, 100, 100, 100, [Tackle])
 
 ###Premade teams
 team1 = (LetDig, ChuPika, Zardichar)
 team2 = (SaurVenu, Ianpers, ZoneMagne)
-team3 = (Ableclef, RiaAlta, LixTeel)
+team3 = (Ableclef, OrusHax, ToiseBlas)
 
 class Team(enum.Enum):
             LetDig_ChuPika_Zardichar = team1
