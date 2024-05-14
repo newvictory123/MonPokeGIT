@@ -3,7 +3,7 @@ from discord import app_commands
 from discord.ext import commands
 import asyncio
 import random
-from Teams import Team
+import Teams
 
 states = [1,2]
 
@@ -14,6 +14,7 @@ class match():
         self.state = 0 
         self.states = [1,2]
         self.moveinturn = []
+        self.gameover = False
 
     def IsJoinable(self, player, matcheslist):
         if self.state == 0 and len(self.players) == 1 and self.channel in matcheslist.keys() and player not in self.players:
@@ -24,10 +25,11 @@ class match():
             return True 
     
     async def ChoosingTeam(self):
-        await asyncio.sleep(10)
+        await asyncio.sleep(2)
         for player in self.players:
             if player.HasAnswered == False:
-                player.MonPokes = random.choice(list(Team))
+                player.MonPokes = random.choice(list(Teams.TeamDict.values()))
+                print(player.MonPokes)
                 player.HasAnswered = False
             elif player.HasAnswered == True:
                 player.HasAnswered = False
@@ -35,60 +37,77 @@ class match():
             
 
     async def Switch(self):
-        await asyncio.sleep(10)
+        await asyncio.sleep(2)
         for player in self.players:
-            if player.HasAnswered == False:
-                player.CurrentMonPoke = player.MonPokes.value[random.randint(0,2)]
-                player.HasAnswered = False
-            if player.HasAnswered == True:
+            if player.HasAnswered == False and player.CanSwitch == True:
+                for monpoke in player.MonPokes:
+                    if monpoke.dead == False:
+                        player.CurrentMonPoke = monpoke
+                        player.CanSwitch = False
+            elif player.HasAnswered == True:
                 player.HasAnwered = False
-            print(player.CurrentMonPoke)
-            print(player.CurrentMonPoke.Name)
-            print(player.CurrentMonPoke.moves)
+                player.CanSwitch = False
+            print(player.playername + "chosen" + player.CurrentMonPoke.Name)
 
 
         
     async def Turnsystem(self):
         await self.channel.send("Choose a move with '/chooseattack'")
+        await self.channel.send("Or switch pokemon with '/switch'")
         await asyncio.sleep(30) 
         player1 = self.players[0]
         player2 = self.players[1]
         player1monpoke = player1.CurrentMonPoke
+        print(player1monpoke)
         player2monpoke = player2.CurrentMonPoke
+        print(player2monpoke)
         if player1.HasAnswered == True and player2.HasAnswered == True:
                     if player1monpoke.Speed > player2monpoke.Speed:
-                        self.moveinturn.append(player1.chosenmove)
-                        self.moveinturn.append(player2.chosenmove)
+                        self.moveinturn.append(player1)
+                        self.moveinturn.append(player2)
                     elif player1monpoke.Speed == player2monpoke.Speed:
-                        movesinscene = (player1.chosenmove, player2.chosenmove)
+                        movesinscene = [player1, player2]
                         randommove = random.choice(movesinscene)
-                        if randommove == player1.chosenmove:
-                            self.moveinturn.append(player1.chosenmove)
-                            self.moveinturn.append(player2.chosenmove)
+                        if randommove == player1:
+                            self.moveinturn.append(player1)
+                            self.moveinturn.append(player2)
                         else: 
-                            self.moveinturn.append(player2.chosenmove)
-                            self.moveinturn.append(player1.chosenmove)      
+                            self.moveinturn.append(player2)
+                            self.moveinturn.append(player1)      
                     else:
-                        self.moveinturn.append(player2.chosenmove)
-                        self.moveinturn.append(player1.chosenmove)
+                        self.moveinturn.append(player2)
+                        self.moveinturn.append(player1)
+                    print(self.moveinturn)
                     for move in self.moveinturn:
-                        if move == player1.chosenmove:
+                        if move == player1:
+                            user = player1monpoke
+                            userplayer = player1
                             target = player2.CurrentMonPoke
                             targetplayer = player2
                         else:
-                            target = player1.team.currentmonpoke
+                            user = player2monpoke
+                            userplayer = player2
+                            target = player1.CurrentMonPoke
                             targetplayer = player1
-                        move.attack(target)
+                        if userplayer.chosenmove != None:
+                                target.HP -= move.damage(user, target)
+                                await self.channel.send(f"{user.Name} used {move.Name}")
+                                await self.channel.send(f"{target.Name} takes {move.damage(user, target)} amount damage")
+                                await self.channel.send(f"{target.Name} HP {target.HP} amount damage")
+                        if target.HP <= 0:
+                                target.dead = True
                         if target.dead == True and targetplayer.MonPokes != []:
-                            target.player.chancetoswitch = True 
+                                await self.channel.send(f"{targetplayer} switch pokemon with switch function")
+                                targetplayer.CanSwitch = True
+                                targetplayer.MonPokes.remove(target)
+                                print("dead")
+                                await self.Switch()    
                         elif target.dead == True and targetplayer.MonPokes == []:
-                            self.GameOver==True
-                    if self.GameOver == True:
-                        print ("gameover")
-                    else:
-                        if target.player.chancetoswitch == True: 
-                            self.switch()
-                        await self.TurnSystem()
+                                winner = user
+                                self.gameover == True
+                                print("dead game over")
+                    if self.gameover == False:        
+                        await self.Turnsystem()
         else: 
             await self.channel.send("Users didnt answer")
             await self.Turnsystem()
@@ -114,4 +133,5 @@ class Player():
         self.MonPokes = None
         self.CurrentMonPoke = None
         self.HasAnswered = False
+        self.CanSwitch = True
         

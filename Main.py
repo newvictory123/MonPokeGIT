@@ -72,7 +72,9 @@ async def chooseteam(interaction: discord.Interaction, team: Teams.Team):
         if player.playername == user.name:
             userchoosing = player
     playerchoosing = matches[channel].players[userchoosing]
-    playerchoosing.MonPokes = team
+    for teams in Teams.TeamDict.keys():
+        if teams == team:
+            playerchoosing.MonPokes = Teams.TeamDict[teams]
     playerchoosing.HasAnswered = True
 
     await interaction.response.send_message(f'Your favourite team is {team.name}.')

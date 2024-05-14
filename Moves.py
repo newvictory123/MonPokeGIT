@@ -53,5 +53,5 @@ class Moves():
             Effectiveness = 0
         else:
             Effectiveness = 1
-        damage = ((((2 * user.Level) / 5 + 2) * self.Power * (Attack / Defense)) / 50 + 2) * Crit * (random.randint(85, 100) / 100) * Stab * Effectiveness
+        damage = ((((2 * user.level) / 5 + 2) * self.Power * (Attack / Defense)) / 50 + 2) * Crit * (random.randint(85, 100) / 100) * Stab * Effectiveness
         return damage
