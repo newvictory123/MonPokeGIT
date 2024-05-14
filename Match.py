@@ -24,7 +24,7 @@ class match():
             return True 
     
     async def ChoosingTeam(self):
-        await asyncio.sleep(2)
+        await asyncio.sleep(10)
         for player in self.players:
             if player.HasAnswered == False:
                 player.MonPokes = random.choice(list(Team))
@@ -35,26 +35,31 @@ class match():
             
 
     async def Switch(self):
-        await asyncio.sleep(2)
+        await asyncio.sleep(10)
         for player in self.players:
             if player.HasAnswered == False:
-                player.CurrentMonPoke = player.MonPokes[random.randint(0,2)]
+                player.CurrentMonPoke = player.MonPokes.value[random.randint(0,2)]
                 player.HasAnswered = False
             if player.HasAnswered == True:
                 player.HasAnwered = False
+            print(player.CurrentMonPoke)
+            print(player.CurrentMonPoke.Name)
+            print(player.CurrentMonPoke.moves)
 
 
         
     async def Turnsystem(self):
-        self.channel.send("Choose a move with '/chooseattack'")
+        await self.channel.send("Choose a move with '/chooseattack'")
         await asyncio.sleep(30) 
         player1 = self.players[0]
         player2 = self.players[1]
+        player1monpoke = player1.CurrentMonPoke
+        player2monpoke = player2.CurrentMonPoke
         if player1.HasAnswered == True and player2.HasAnswered == True:
-                    if player1.team[player1.CurrentMonPoke].speed > player2.team[player2.CurrentMonPoke].speed:
+                    if player1monpoke.Speed > player2monpoke.Speed:
                         self.moveinturn.append(player1.chosenmove)
                         self.moveinturn.append(player2.chosenmove)
-                    elif player1.team[player1.CurrentMonPoke].speed == player2.team[player2.CurrentMonPoke].speed:
+                    elif player1monpoke.Speed == player2monpoke.Speed:
                         movesinscene = (player1.chosenmove, player2.chosenmove)
                         randommove = random.choice(movesinscene)
                         if randommove == player1.chosenmove:
@@ -68,15 +73,15 @@ class match():
                         self.moveinturn.append(player1.chosenmove)
                     for move in self.moveinturn:
                         if move == player1.chosenmove:
-                            target = player2.team.currentmonpoke
+                            target = player2.CurrentMonPoke
                             targetplayer = player2
                         else:
                             target = player1.team.currentmonpoke
                             targetplayer = player1
                         move.attack(target)
-                        if target.dead == True and targetplayer.monpokes != []:
+                        if target.dead == True and targetplayer.MonPokes != []:
                             target.player.chancetoswitch = True 
-                        elif target.dead == True and targetplayer.monpokes == []:
+                        elif target.dead == True and targetplayer.MonPokes == []:
                             self.GameOver==True
                     if self.GameOver == True:
                         print ("gameover")
@@ -105,6 +110,7 @@ class match():
 class Player():
     def __init__(self, playername):
         self.playername = playername
+        self.chosenmove = None
         self.MonPokes = None
         self.CurrentMonPoke = None
         self.HasAnswered = False
