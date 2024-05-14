@@ -4,7 +4,7 @@ from discord.ext import commands
 import asyncio
 import random
 import Teams
-
+import copy
 states = [1,2]
 
 class match():
@@ -28,7 +28,7 @@ class match():
         await asyncio.sleep(2)
         for player in self.players:
             if player.HasAnswered == False:
-                player.MonPokes = random.choice(list(Teams.TeamDict.values()))
+                player.MonPokes = copy.deepcopy(random.choice(list(Teams.TeamDict.values())))
                 print(player.MonPokes)
                 player.HasAnswered = False
             elif player.HasAnswered == True:
@@ -52,6 +52,7 @@ class match():
 
         
     async def Turnsystem(self):
+        self.moveinturn = []
         await self.channel.send("Choose a move with '/chooseattack'")
         await self.channel.send("Or switch pokemon with '/switch'")
         await asyncio.sleep(30) 
@@ -89,10 +90,10 @@ class match():
                             userplayer = player2
                             target = player1.CurrentMonPoke
                             targetplayer = player1
-                        if userplayer.chosenmove != None:
-                                target.HP -= move.damage(user, target)
-                                await self.channel.send(f"{user.Name} used {move.Name}")
-                                await self.channel.send(f"{target.Name} takes {move.damage(user, target)} amount damage")
+                        if move.chosenmove != None:
+                                target.HP -= move.chosenmove.damage(user, target)
+                                await self.channel.send(f"{user.Name} used {move.chosenmove.Name}")
+                                await self.channel.send(f"{target.Name} takes {move.chosenmove.damage(user, target)} amount damage")
                                 await self.channel.send(f"{target.Name} HP {target.HP} amount damage")
                         if target.HP <= 0:
                                 target.dead = True
@@ -101,6 +102,7 @@ class match():
                                 targetplayer.CanSwitch = True
                                 targetplayer.MonPokes.remove(target)
                                 print("dead")
+                                print(targetplayer.MonPokes)
                                 await self.Switch()    
                         elif target.dead == True and targetplayer.MonPokes == []:
                                 winner = user

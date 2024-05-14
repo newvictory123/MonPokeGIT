@@ -7,6 +7,7 @@ from Match import Player
 from discord import app_commands
 from discord.ext import commands
 import Teams
+import copy
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -71,11 +72,13 @@ async def chooseteam(interaction: discord.Interaction, team: Teams.Team):
     for player in matches[channel].players:
         if player.playername == user.name:
             userchoosing = player
-    playerchoosing = matches[channel].players[userchoosing]
+    for player in matches[channel].players:
+        if player == userchoosing:
+            playerchoosing = player
     for teams in Teams.TeamDict.keys():
-        if teams == team:
-            playerchoosing.MonPokes = Teams.TeamDict[teams]
-    playerchoosing.HasAnswered = True
+        if teams == team.value:
+            playerchoosing.MonPokes = copy.deepcopy(Teams.TeamDict[teams])
+            playerchoosing.HasAnswered = True
 
     await interaction.response.send_message(f'Your favourite team is {team.name}.')
 
