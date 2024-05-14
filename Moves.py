@@ -29,7 +29,7 @@ class Moves():
         self.Accuracy = Accuracy
 
     def damage(self, user, target):
-        if random.randint > self.Accuracy:
+        if random.randint(1, 100) > self.Accuracy:
             return 0
         if self.Sort == "Physical":
             Attack = user.Attack
