@@ -4,25 +4,25 @@ from Moves import Moves
 class MonPoke:
     def __init__(self, Name, HP, Type, Speed, Attack, Defense, SpAtk, SpDef, moves, level=50, dead = False):
         self.Name = Name
-        self.HP = HP
+        self.HP = self.Health(HP)
         self.Type = Type
-        self.Speed = Speed
-        self.Attack = Attack
-        self.Defense = Defense
-        self.SpAtk = SpAtk
-        self.SpDef = SpDef
+        self.Speed = self.Otherstat(Speed)
+        self.Attack = self.Otherstat(Attack)
+        self.Defense = self.Otherstat(Defense)
+        self.SpAtk = self.Otherstat(SpAtk)
+        self.SpDef = self.Otherstat(SpDef)
         self.moves = moves
         self.level = level
         self.dead = dead
 
 
 
-    def Health(self, EV):
-        finalHP= ((((2 * self.HP + random.randint(1,31) + (EV/4))*50)/100)+10+50)
+    def Health(self, Base):
+        finalHP= ((((2 * Base + random.randint(1,31) + (85/4))*50)/100)+10+50)
         print(finalHP)
 
-    def Otherstat(B, IV, EV, L):
-        finalstat = (((((2*B) + IV +(EV/4))*L)/100)+5)
+    def Otherstat(self, stat):
+        finalstat = (((((2*stat) + random.randint(0, 31) +(85/4))*self.level)/100)+5)
         print(finalstat)
 
 """HP(108, 50, 74, random.randint(1,31))"""
