@@ -41,6 +41,22 @@ OrusHax = MonPoke("OrusHax", 10, "Dragon", 30, 78, 100, 100, 100, {"Tackle":Tack
 
 ToiseBlas = MonPoke("ToiseBlas", 10, "Water", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
+LowSwell = MonPoke()
+
+EmGol = MonPoke()
+
+ApePrime = MonPoke()
+
+GarGen = MonPoke()
+
+poison = MonPoke ()
+
+Psychic = MonPoke()
+
+Ice = MonPoke()
+
+
+
 ###Premade teams
 team1 = (LetDig, ChuPika, Zardichar)
 team2 = (SaurVenu, Ianpers, ZoneMagne)
