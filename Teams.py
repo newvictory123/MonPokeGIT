@@ -81,10 +81,18 @@ VannyLea = MonPoke("VannyLea", 10, "Bug", 30, 78, 100, 100, 100, {"Tackle":Tackl
 team1 = (LetDig, ChuPika, Zardichar)
 team2 = (SaurVenu, Ianpers, ZoneMagne)
 team3 = (Ableclef, OrusHax, ToiseBlas)
+team4 = (LowSwell, EmGol, ApePrime)
+team5 = (GarGen, PedeScoli, KazamAla)
+team6 = (LuggAva, SolAb, VannyLea)
 
-TeamDict = {team1 : [LetDig, ChuPika, Zardichar],
-team2 : [SaurVenu, Ianpers, ZoneMagne],
-team3 : [Ableclef, OrusHax, ToiseBlas]}
+TeamDict = {
+team1: [LetDig, ChuPika, Zardichar],
+team2: [SaurVenu, Ianpers, ZoneMagne],
+team3: [Ableclef, OrusHax, ToiseBlas],
+team4: [LowSwell, EmGol, ApePrime], 
+team5: [GarGen, PedeScoli, KazamAla], 
+team6: [LuggAva, SolAb, VannyLea]
+}
 
 class Team(enum.Enum):
             LetDig_ChuPika_Zardichar = team1
