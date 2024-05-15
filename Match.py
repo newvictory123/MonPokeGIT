@@ -153,7 +153,6 @@ class match():
          elif self.state == 2:
             await self.Turnsystem()
             self.state = 3
-            continue
         
     
 class Player():
