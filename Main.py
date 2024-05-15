@@ -36,17 +36,22 @@ async def matchmake(interaction: discord.interactions):
     user = interaction.user
     print(matches.keys())
     if channel.name[:15] == "monpoke-stadium":
-            player = Player(user.name)
-            if channel in matches.keys() and matches[channel].IsJoinable(player, matches):
+            if channel in matches.keys() and matches[channel].IsJoinable(user.name, matches):
+                player = Player(user.name)
                 matches[channel].players.append(player)
+                matches[channel].playernames.append(user.name)
                 await interaction.response.send_message(f"{user} has joined {channel.name}!")
                 print ("lijk")
-            else:
+            elif channel not in matches.keys():
+                player = Player(user.name)
                 newmatch = match(channel)
                 newmatch.players.append(player)
+                newmatch.playernames.append(user.name)
                 matches[newmatch.channel] = newmatch
                 await interaction.response.send_message(f"{user} has startes match in {channel.name} use /matchmake to join the match!")
                 print("lidjf")
+            else:
+                await interaction.response.send_message("channel is occupied or user already in channel")    
     else:
        await interaction.response.send_message("Cant use this command in non-MonPoke Stadium channels")
 
@@ -54,12 +59,16 @@ async def matchmake(interaction: discord.interactions):
 async def quit(interaction: discord.integrations):
     channel = interaction.channel
     user = interaction.user
-    for player in matches[channel].players:
-        if player.playername == user.name:
-            playerquit = player
-    if channel in matches.keys() and matches[channel].IsQuitable(user):
-        matches[channel].players.remove(playerquit)
-        await interaction.response.send_message(f"{user} left {channel}")
+    
+    if channel in matches.keys():
+        for player in matches[channel].players:
+            if player.playername == user.name:
+                playerquit = player
+        if matches[channel].IsQuitable(user.name):
+            matches[channel].players.remove(playerquit)
+            matches[channel].playernames.remove(user.name)
+            del matches[channel]
+            await interaction.response.send_message(f"{user} left {channel}")
     else:
         await interaction.response.send_message("Error")
             
@@ -102,8 +111,25 @@ async def chooseattack(interaction: discord.interactions, attack: str):
     None
 
 @bot.tree.command(name = "switch")
-async def chooseattack(interaction: discord.interactions):
-    None
+async def chooseattack(interaction: discord.interactions, monpoke :str):
+    user = interaction.user
+    channel=interaction.channel
+    for player in matches[channel].players:
+        if player.playername == user.name:
+            userchoosing = player
+    for player in matches[channel].players:
+        if player == userchoosing:
+            playerchoosing = player
+    if channel in matches.keys():
+        if matches[channel].state == 1 or matches[channel].state == 2: 
+            if user.name in matches[channel].playernames:
+                for monpokes in playerchoosing.MonPokes:
+                    if monpokes.Name == monpoke and playerchoosing.CanSwitch:
+                        playerchoosing.CurrentMonPoke = monpokes
+                        playerchoosing.HasAnswered = True
+                        await interaction.response.send_message(f"you have chosen {playerchoosing.CurrentMonPoke.Name}", ephemeral = True)
+                if playerchoosing.HasAnswered != True:
+                    await interaction.response.send_message(f"{monpoke} not in team list or not able to switch", ephemeral = True)
 
 
 @bot.tree.command(name = "startgame")

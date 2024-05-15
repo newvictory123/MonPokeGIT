@@ -23,23 +23,23 @@ ClawDragon = Moves("ClawDragon", "Dragon", "Physical", 80, 100)
 Frus = Moves("Frus", "Water", "Special", 90, 100) 
 
 ###singular MonPokes
-Zardichar = MonPoke("Zardichar", 108, "Grass", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+Zardichar = MonPoke("Zardichar", 10, "Grass", 30, 78, 100, 100, 100,{"Tackle":Tackle})
 
-ChuPika = MonPoke("ChuPika", 108, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+ChuPika = MonPoke("ChuPika", 10, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle})
 
-LetDig = MonPoke("LetDig", 108, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+LetDig = MonPoke("LetDig", 10, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle})
 
-SaurVenu = MonPoke("SaurVenu", 108, "Grass", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+SaurVenu = MonPoke("SaurVenu", 10, "Grass", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
-Ianpers = MonPoke("Ianpers", 108, "Normal", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+Ianpers = MonPoke("Ianpers", 10, "Normal", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
-ZoneMagne = MonPoke("Zonemagne", 108, "Steel", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+ZoneMagne = MonPoke("Zonemagne", 10, "Steel", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
-Ableclef = MonPoke("Ableclef", 108, "Fairy", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+Ableclef = MonPoke("Ableclef", 10, "Fairy", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
-OrusHax = MonPoke("OrusHax", 108, "Dragon", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+OrusHax = MonPoke("OrusHax", 10, "Dragon", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
-ToiseBlas = MonPoke("ToiseBlas", 108, "Water", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+ToiseBlas = MonPoke("ToiseBlas", 10, "Water", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
 ###Premade teams
 team1 = (LetDig, ChuPika, Zardichar)
