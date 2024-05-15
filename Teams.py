@@ -22,13 +22,23 @@ ClawDragon = Moves("Claw Dragon", "Dragon", "Physical", 80, 100)
 
 Frus = Moves("Frus", "Water", "Special", 90, 100) 
 
-BirdBrave = Moves()
+BirdBrave = Moves("Bird Brave", "Flying", "Physical", 100,100)
 
-SlideRocks = Moves()
+SlideRocks = Moves("Slide Rocks", "Rocks", "Physical", 80, 90)
 
-BreakBricks = Moves()
+BreakBricks = Moves("Break Bricks", "Fighting", "Physical", 80, 100)
 
-BallShadow = Moves()
+BallShadow = Moves("Ball Shadow", "Ghost", "Special", 80, 100)
+
+JabPoison = Moves("Jab Poison", "Poison", "Physical", 80, 100)
+
+ChicPsy = Moves("ChicPsy", "Psychic", "Special", 90, 100)
+
+CrashIcicle = Moves("Crash Icicle", "Ice", "Physical", 85, 90)
+
+SlashNight = Moves("Slash Night", "Dark", "Physical", 80, 100)
+
+ScissorX = Moves("Scissor X", "Bug", "Physical", 80, 100)
 
 ###singular MonPokes
 Zardichar = MonPoke("Zardichar", 10, "Grass", 30, 78, 100, 100, 100,{"Tackle":Tackle})
