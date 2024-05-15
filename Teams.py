@@ -98,3 +98,6 @@ class Team(enum.Enum):
             LetDig_ChuPika_Zardichar = team1
             dlkj= team2
             ldkfj=team3
+            bfffd = team4
+            adaf = team5
+            mnhy = team6
