@@ -41,11 +41,11 @@ SlashNight = Moves("Slash Night", "Dark", "Physical", 80, 100)
 ScissorX = Moves("Scissor X", "Bug", "Physical", 80, 100)
 
 ###singular MonPokes
-Zardichar = MonPoke("Zardichar", 10, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle, "ThrowerFlame": ThrowerFlame, "Break Bricks": BreakBricks, "Bird Brave": BirdBrave})
+Zardichar = MonPoke("Zardichar", 1, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle, "ThrowerFlame": ThrowerFlame, "Break Bricks": BreakBricks, "Bird Brave": BirdBrave})
 
-ChuPika = MonPoke("ChuPika", 10, "Electric", 30, 78, 100, 100, 100,{"Tackle":Tackle, "BoltThunder": BoltThunder, "Frus": Frus, "Ball Gyro": BallGyro})
+ChuPika = MonPoke("ChuPika", 1, "Electric", 30, 78, 100, 100, 100,{"Tackle":Tackle, "BoltThunder": BoltThunder, "Frus": Frus, "Ball Gyro": BallGyro})
 
-LetDig = MonPoke("LetDig", 10, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle, "QuakeEarth": QuakeEarth, "Slide Rocks": SlideRocks, "Tackle PLUS": TacklePLUS})
+LetDig = MonPoke("LetDig", 1, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle, "QuakeEarth": QuakeEarth, "Slide Rocks": SlideRocks, "Tackle PLUS": TacklePLUS})
 
 SaurVenu = MonPoke("SaurVenu", 10, "Grass", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Ball Energy": BallEnergy, "Jab Poison": JabPoison, "QuakeEarth": QuakeEarth})
 
