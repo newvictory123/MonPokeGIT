@@ -23,11 +23,11 @@ ClawDragon = Moves("ClawDragon", "Dragon", "Physical", 80, 100)
 Frus = Moves("Frus", "Water", "Special", 90, 100) 
 
 ###singular MonPokes
-Zardichar = MonPoke("Zardichar", 10, "Grass", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+Zardichar = MonPoke("Zardichar", 108, "Grass", 30, 78, 100, 100, 100,{"Tackle":Tackle})
 
-ChuPika = MonPoke("ChuPika", 10, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+ChuPika = MonPoke("ChuPika", 108, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle})
 
-LetDig = MonPoke("LetDig", 10, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+LetDig = MonPoke("LetDig", 108, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle})
 
 SaurVenu = MonPoke("SaurVenu", 10, "Grass", 30, 78, 100, 100, 100, {"Tackle":Tackle})
 
@@ -68,5 +68,5 @@ team3 : [Ableclef, OrusHax, ToiseBlas]}
 
 class Team(enum.Enum):
             LetDig_ChuPika_Zardichar = team1
-            dlkj= team2
-            ldkfj=team3
+            SaurVenu_Ianpers_ZoneMagne = team2
+            Ableclef_OrusHax_ToiseBlas = team3
