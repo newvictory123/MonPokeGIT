@@ -81,7 +81,6 @@ class match():
                     player2.HasAnswered = False
                     player2.CanSwitch = False
                     player1.CanSwitch = False
-
                     if player1monpoke.Speed > player2monpoke.Speed:
                         self.moveinturn.append(player1)
                         self.moveinturn.append(player2)
@@ -135,8 +134,8 @@ class match():
                                                 await self.Switch()
                                                 await asyncio.sleep(1)
                                                 await self.Turnsystem()
-                                else:
-                                    await self.Turnsystem()
+                    if self.gameover == False:    
+                        await self.Turnsystem()
 
                         
         else: 

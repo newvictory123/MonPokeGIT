@@ -78,18 +78,18 @@ async def quit(interaction: discord.integrations):
 async def chooseteam(interaction: discord.Interaction, team: Teams.Team):
     user = interaction.user
     channel=interaction.channel
-    for player in matches[channel].players:
-        if player.playername == user.name:
-            userchoosing = player
-    for player in matches[channel].players:
-        if player == userchoosing:
-            playerchoosing = player
-    for teams in Teams.TeamDict.keys():
-        if teams == team.value:
-            playerchoosing.MonPokes = copy.deepcopy(Teams.TeamDict[teams])
-            playerchoosing.HasAnswered = True
-
-    await interaction.response.send_message(f'Your favourite team is {team.name}.')
+    if channel in matches.keys():
+        if user.name in matches[channel].playernames:
+            for player in matches[channel].players:
+                if player.playername == user.name:
+                    playerchoosing = player
+            for teams in Teams.TeamDict.keys():
+                if teams == team.value:
+                    playerchoosing.MonPokes = copy.deepcopy(Teams.TeamDict[teams])
+                    playerchoosing.HasAnswered = True
+                    await interaction.response.send_message(f'You have chosen {playerchoosing.MonPokes}')
+        else:
+            await interaction.response.send_message('Error')
 
 @bot.tree.command(name = "chooseattack")
 async def chooseattack(interaction: discord.interactions, attack: str):
@@ -98,17 +98,16 @@ async def chooseattack(interaction: discord.interactions, attack: str):
     currentmatch = matches[channel]
     for player in currentmatch.players:
         if player.playername == user.name:
-            currentplayer = player
+                currentplayer = player
     if channel in matches.keys() and currentmatch.state == 2 and currentplayer in currentmatch.players:
         if attack in player.CurrentMonPoke.moves.keys():
-            currentplayer.chosenmove = player.CurrentMonPoke.moves[attack]
-            currentplayer.HasAnswered = True
-            await interaction.response.send_message(f"You have chosen {attack}", ephemeral = True)
+                currentplayer.chosenmove = player.CurrentMonPoke.moves[attack]
+                currentplayer.HasAnswered = True
+                await interaction.response.send_message(f"You have chosen {attack}", ephemeral = True)
         else:
             await interaction.response.send_message(f"{attack} not in pokemon move list", ephemeral = True)
     else:
-        await interaction.response.send_message(f"error", ephemeral = True)
-    None
+            await interaction.response.send_message(f"error", ephemeral = True)
 
 @bot.tree.command(name = "switch")
 async def chooseattack(interaction: discord.interactions, monpoke :str):
