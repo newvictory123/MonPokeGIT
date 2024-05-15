@@ -8,7 +8,7 @@ ThrowerFlame = Moves("Thrower Flame", "Fire", "Special", 90, 100)
 
 BoltThunder = Moves("Bolt Thunder", "Electric", "Special", 90, 100)
 
-QuakeEarth = Moves("Quake Earth", "Ground", "Physical", 100, 100)
+QuakeEarth = Moves("QuakeEarth", "Ground", "Physical", 100, 100)
 
 BallEnergy = Moves("Ball Energy", "Grass", "Special", 90, 100)
 
@@ -41,41 +41,41 @@ SlashNight = Moves("Slash Night", "Dark", "Physical", 80, 100)
 ScissorX = Moves("Scissor X", "Bug", "Physical", 80, 100)
 
 ###singular MonPokes
-Zardichar = MonPoke("Zardichar", 10, "Grass", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+Zardichar = MonPoke("Zardichar", 10, "Grass", 30, 78, 100, 100, 100,{"Tackle":Tackle, "ThrowerFlame": ThrowerFlame, "Break Bricks": BreakBricks, "Bird Brave": BirdBrave})
 
-ChuPika = MonPoke("ChuPika", 10, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+ChuPika = MonPoke("ChuPika", 10, "Fire", 30, 78, 100, 100, 100,{"Tackle":Tackle, "BoltThunder": BoltThunder, "Frus": Frus, "Ball Gyro": BallGyro})
 
-LetDig = MonPoke("LetDig", 10, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle})
+LetDig = MonPoke("LetDig", 10, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle, "QuakeEarth": QuakeEarth, "Slide Rocks": SlideRocks, "Tackle PLUS": TacklePLUS})
 
-SaurVenu = MonPoke("SaurVenu", 10, "Grass", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+SaurVenu = MonPoke("SaurVenu", 10, "Grass", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Ball Energy": BallEnergy, "Jab Poison": JabPoison, "QuakeEarth": QuakeEarth})
 
-Ianpers = MonPoke("Ianpers", 10, "Normal", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+Ianpers = MonPoke("Ianpers", 10, "Normal", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Tackle PLUS": TacklePLUS, "Claw Dragon": ClawDragon, "Crash Icicle": CrashIcicle})
 
-ZoneMagne = MonPoke("Zonemagne", 10, "Steel", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+ZoneMagne = MonPoke("Zonemagne", 10, "Steel", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Ball Gyro": BallGyro, "BoltThunder": BoltThunder, "ChicPsy": ChicPsy})
 
-Ableclef = MonPoke("Ableclef", 10, "Fairy", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+Ableclef = MonPoke("Ableclef", 10, "Fairy", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Blast Moon": BlastMoon, "ChicPsy": ChicPsy, "Ball Energy": BallEnergy})
 
-OrusHax = MonPoke("OrusHax", 10, "Dragon", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+OrusHax = MonPoke("OrusHax", 10, "Dragon", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Claw Dragon": ClawDragon, "QuakeEarth": QuakeEarth, "Slash Night": SlashNight})
 
-ToiseBlas = MonPoke("ToiseBlas", 10, "Water", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+ToiseBlas = MonPoke("ToiseBlas", 10, "Water", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Frus": Frus, "Ball Gyro": BallGyro, "Tackle PLUS": TacklePLUS})
 
-LowSwell = MonPoke("LowSwell", 10, "Flying", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+LowSwell = MonPoke("LowSwell", 10, "Flying", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Bird Brave": BirdBrave, "Scissor X": ScissorX, "Break Bricks": BreakBricks})
 
-EmGol = MonPoke("EmGol", 10, "Rock", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+EmGol = MonPoke("EmGol", 10, "Rock", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Slide Rocks": SlideRocks, "QuakeEarth": QuakeEarth, "Ball Gyro": BallGyro})
 
-ApePrime = MonPoke("ApePrime", 10, "Fighting", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+ApePrime = MonPoke("ApePrime", 10, "Fighting", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Break Bricks": BreakBricks, "Slash Night": SlashNight, "Jab Poison": JabPoison})
 
-GarGen = MonPoke("GarGen", 10, "Ghost", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+GarGen = MonPoke("GarGen", 10, "Ghost", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Ball Shadow": BallShadow, "Jab Poison": JabPoison, "ChicPsy": ChicPsy})
 
-PedeScoli = MonPoke ("PedeScoli", 10, "Poison", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+PedeScoli = MonPoke ("PedeScoli", 10, "Poison", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Jab Poison": JabPoison, "Scissor X": ScissorX, "Slash Night": SlashNight})
 
-KazamAla = MonPoke("KazamAla", 10, "Psychic", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+KazamAla = MonPoke("KazamAla", 10, "Psychic", 30, 78, 100, 100, 100, {"Tackle":Tackle, "ChicPsy": ChicPsy, "Ball Shadow": BallShadow, "Bolt Thunder": BoltThunder})
 
-LuggAva = MonPoke("LuggAva", 10, "Ice", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+LuggAva = MonPoke("LuggAva", 10, "Ice", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Crash Icicle": CrashIcicle, "Slide Rocks": SlideRocks, "Frus": Frus})
 
-SolAb = MonPoke("SolAb", 10, "Dark", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+SolAb = MonPoke("SolAb", 10, "Dark", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Slash Night": SlashNight, "Claw Dragon": ClawDragon, "ThrowerFlame": ThrowerFlame})
 
-VannyLea = MonPoke("VannyLea", 10, "Bug", 30, 78, 100, 100, 100, {"Tackle":Tackle})
+VannyLea = MonPoke("VannyLea", 10, "Bug", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Scissor X": ScissorX, "Ball Energy": BallEnergy, "Slash Night": SlashNight})
 
 ###Premade teams
 team1 = (LetDig, ChuPika, Zardichar)
