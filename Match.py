@@ -163,19 +163,3 @@ class Player():
         self.CurrentMonPoke = None
         self.HasAnswered = False
         self.CanSwitch = True
-        
-"""if target.dead == True and targetplayer.MonPokes != []:
-                                await self.channel.send(f"{targetplayer} switch pokemon with switch function")
-                                targetplayer.CanSwitch = True
-                                targetplayer.MonPokes.remove(target)
-                                print("dead")
-                                print(targetplayer.MonPokes)
-                                await self.Switch()    
-                        elif target.dead == True and targetplayer.MonPokes == []:
-                                winner = user
-                                self.gameover == True
-                                print("dead game over")"""
-"""if self.gameover == False:        
-                            await self.Turnsystem()
-                        elif self.gameover == True:
-                            self.channel.send(f"{winner} is the winner")"""
