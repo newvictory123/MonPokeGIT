@@ -49,7 +49,7 @@ LetDig = MonPoke("LetDig", 10, "Ground", 30, 78, 100, 100, 100,{"Tackle":Tackle,
 
 SaurVenu = MonPoke("SaurVenu", 10, "Grass", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Ball Energy": BallEnergy, "Jab Poison": JabPoison, "QuakeEarth": QuakeEarth})
 
-Ianpers = MonPoke("Ianpers", 10, "Normal", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Tackle PLUS": TacklePLUS, "Claw Dragon": ClawDragon, "Crash Icicle": CrashIcicle})
+IanPers = MonPoke("Ianpers", 10, "Normal", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Tackle PLUS": TacklePLUS, "Claw Dragon": ClawDragon, "Crash Icicle": CrashIcicle})
 
 ZoneMagne = MonPoke("Zonemagne", 10, "Steel", 30, 78, 100, 100, 100, {"Tackle":Tackle, "Ball Gyro": BallGyro, "BoltThunder": BoltThunder, "ChicPsy": ChicPsy})
 
@@ -79,7 +79,7 @@ VannyLea = MonPoke("VannyLea", 10, "Bug", 30, 78, 100, 100, 100, {"Tackle":Tackl
 
 ###Premade teams
 team1 = (LetDig, ChuPika, Zardichar)
-team2 = (SaurVenu, Ianpers, ZoneMagne)
+team2 = (SaurVenu, IanPers, ZoneMagne)
 team3 = (Ableclef, OrusHax, ToiseBlas)
 team4 = (LowSwell, EmGol, ApePrime)
 team5 = (GarGen, PedeScoli, KazamAla)
@@ -87,7 +87,7 @@ team6 = (LuggAva, SolAb, VannyLea)
 
 TeamDict = {
 team1: [LetDig, ChuPika, Zardichar],
-team2: [SaurVenu, Ianpers, ZoneMagne],
+team2: [SaurVenu, IanPers, ZoneMagne],
 team3: [Ableclef, OrusHax, ToiseBlas],
 team4: [LowSwell, EmGol, ApePrime], 
 team5: [GarGen, PedeScoli, KazamAla], 
@@ -96,8 +96,8 @@ team6: [LuggAva, SolAb, VannyLea]
 
 class Team(enum.Enum):
             LetDig_ChuPika_Zardichar = team1
-            dlkj= team2
-            ldkfj=team3
-            bfffd = team4
-            adaf = team5
-            mnhy = team6
+            SaurVenu_IanPers_ZoneMagne = team2
+            Ableclef_OrusHax_ToiseBlas =team3
+            LowSwell_EmGol_ApePrime = team4
+            GarGen_PedeScoli_KazamAla = team5
+            LuggAva_SolAb_VannyLea = team6
