@@ -28,7 +28,7 @@ class match():
     
     async def ChoosingTeam(self):
         await self.channel.send("Choose team with '/chooseteam'")
-        await asyncio.sleep(1)
+        await asyncio.sleep(15)
         for player in self.players:
             if player.HasAnswered == False:
                 player.MonPokes = copy.deepcopy(random.choice(list(Teams.TeamDict.values())))
@@ -51,8 +51,8 @@ class match():
                     print("Switch" + str(monpoke.Name))
                     player.CurrentMonPoke = monpoke
                     player.CanSwitch = False
-                    if self.state == 2:
-                        await self.channel.send(f"{player} switched to {player.CurrentMonPoke.Name}")
+                if self.state == 2:
+                    await self.channel.send(f"{player.playername} switched to {player.CurrentMonPoke.Name}")
             elif player.HasAnswered == True:
                 player.HasAnwered = False
                 player.CanSwitch = False
@@ -79,6 +79,8 @@ class match():
         if player1.HasAnswered == True and player2.HasAnswered == True:
                     player1.HasAnswered = False
                     player2.HasAnswered = False
+                    player2.CanSwitch = False
+                    player1.CanSwitch = False
 
                     if player1monpoke.Speed > player2monpoke.Speed:
                         self.moveinturn.append(player1)
@@ -115,6 +117,8 @@ class match():
                                 await self.channel.send(f"{targetplayer.playername}'s {target.Name} takes {move.chosenmove.damage(user, target)} amount damage")
                                 await self.channel.send(f"{targetplayer.playername}'s {target.Name} HP {target.HP} amount damage")
                                 if target.HP <= 0:
+                                        print(targetplayer.playername)
+                                        print(target)
                                         if targetplayer.MonPokes != []:
                                             if len(targetplayer.MonPokes) == 1:
                                                 winner = user
@@ -122,7 +126,7 @@ class match():
                                                 print("dead game over") 
                                                 await self.channel.send(f"{winner} is the winner") 
                                             else:
-                                                await self.channel.send(f"{targetplayer} switch pokemon with switch function")
+                                                await self.channel.send(f"{targetplayer.playername} switch pokemon with switch function")
                                                 targetplayer.CanSwitch = True
                                                 targetplayer.MonPokes.remove(target)
                                                 print("dead")
@@ -131,6 +135,8 @@ class match():
                                                 await self.Switch()
                                                 await asyncio.sleep(1)
                                                 await self.Turnsystem()
+                                else:
+                                    await self.Turnsystem()
 
                         
         else: 
