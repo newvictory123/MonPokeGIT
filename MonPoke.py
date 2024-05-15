@@ -27,6 +27,3 @@ class MonPoke:
         return finalstat
         print(finalstat)
 
-"""HP(108, 50, 74, random.randint(1,31))"""
-
-"""Otherstat(130, random.randint(1,31), 190, 50)"""

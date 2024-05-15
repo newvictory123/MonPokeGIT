@@ -27,9 +27,3 @@ def otherstattest(base):
 Healthtest(40)
 
 otherstattest(40)
-
-
-
-
-
-
